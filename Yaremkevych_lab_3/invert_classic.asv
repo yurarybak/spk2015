@@ -1,0 +1,18 @@
+function mutationChildren = invert_classic(parents ,options,NVARS, ...
+    FitnessFcn, state, thisScore,thisPopulation,mutationRate)
+nKids = length(parents)/2
+mutationChildren = cell(nKids,1)
+index = 1
+
+for i=1:nKids
+    i
+    parent = thisPopulation{parents(index)}
+    index = index + 2
+    %вибір двох порядкових номер генів між якми роводитимесь інвертування 
+    p1 = ceil((length(parent) -1) * rand)
+    p2 = p1 + ceil((length(parent) - p1- 1) * rand)
+    child = parent;
+    child(p1:p2) = fliplr(child(p1:p2))
+    mutationChildren{i} = child;
+end
+end
